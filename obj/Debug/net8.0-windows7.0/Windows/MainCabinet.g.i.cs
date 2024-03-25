@@ -61,7 +61,7 @@ namespace Praktika_1.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Praktika_1;component/windows/maincabinet.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Praktika_1;V1.0.0.0;component/windows/maincabinet.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\MainCabinet.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

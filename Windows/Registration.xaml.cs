@@ -119,7 +119,7 @@ namespace Praktika_1
             bool hasUpperCase = false;
             bool hasDigit = false;
             bool hasSpecialCharacter = false;
-            if (PasswordReg.Text.Length <= 8)
+            if (PasswordReg.Text.Length < 8)
             {
                 PasswordErrorBox.Text = "Пароль менее 8 символов";
                 return false;
