@@ -79,7 +79,7 @@ namespace Praktika_1
         private void AlreadyReg_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            this.Close();
+            this.Hide();
             mainWindow.Show();
         }
 
