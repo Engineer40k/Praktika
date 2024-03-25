@@ -11,7 +11,7 @@ using Praktika_1.Classes;
 namespace Praktika_1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240322104520_Initial")]
+    [Migration("20240325143318_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace Praktika_1.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.17")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

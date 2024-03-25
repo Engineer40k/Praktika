@@ -23,6 +23,9 @@
         <TextBox Grid.Row="1" Grid.Column="1" Margin="10,20" FontSize="20" Name="EmailReg"/>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="10,20" FontSize="20" Name="PasswordReg"/>
         <TextBox Grid.Row="3" Grid.Column="1" Margin="10,20" FontSize="20" Name="PasswordRepReg"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="16" Name="LoginErrorBox"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" FontSize="16" Name="EmailErrorBox"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" FontSize="16" Name="PasswordErrorBox"/>
         <TextBlock Grid.Row="0" Text="Логин:" FontSize="28" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="1" Text="Электронная почта:" FontSize="28" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2" Text="Пароль:" FontSize="28" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>

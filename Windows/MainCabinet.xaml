@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Praktika_1.Windows"
         mc:Ignorable="d"
-        Title="MainCabinet" Height="450" Width="800">
+        Title="MainCabinet" Height="450" Width="800" Background="Beige">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,20" FontSize="42" Text="Добро пожаловать"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,20" FontSize="42" Name="UsernameBox"/>
     </Grid>
 </Window>

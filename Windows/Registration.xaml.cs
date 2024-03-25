@@ -28,9 +28,15 @@ namespace Praktika_1
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginErrorBox.Text = string.Empty;
+            EmailErrorBox.Text = string.Empty;
+            PasswordErrorBox.Text = string.Empty;
+            LoginReg.BorderBrush = new SolidColorBrush(Colors.Black);
+            EmailReg.BorderBrush = new SolidColorBrush(Colors.Black);
+            PasswordReg.BorderBrush = new SolidColorBrush(Colors.Black);
+            PasswordRepReg.BorderBrush = new SolidColorBrush(Colors.Black);
             var Login = LoginReg.Text;
-
+            var Email = EmailReg.Text;
             var Password = PasswordReg.Text;
 
             var Context = new AppDbContext();
@@ -43,20 +49,28 @@ namespace Praktika_1
             }
             else if (LoginCheck() == false) 
             {
-                MessageBox.Show("Введите логин");
+                LoginReg.BorderBrush = new SolidColorBrush(Colors.Red);
+                LoginErrorBox.Text="Введите логин";
             }
             else if(EmailCheck() == false)
             {
-                MessageBox.Show("Введите/Исправте электронную почту");
+                EmailReg.BorderBrush = new SolidColorBrush(Colors.Red);
+                return;
+            }
+            else if(PasswordCheck() == false)
+            {
+                PasswordReg.BorderBrush = new SolidColorBrush(Colors.Red);
+                PasswordRepReg.BorderBrush = new SolidColorBrush(Colors.Red);
+                return;
             }
             else 
             {
-                var User = new User { Login = Login, Password = Password };
+                var User = new User { Login = Login, Password = Password, Email = Email };
                 Context.Users.Add(User);
                 Context.SaveChanges();
                 MessageBox.Show("Welcome to the club, buddy");
-                this.Close();
                 MainWindow mainWindow = new MainWindow();
+                this.Hide();
                 mainWindow.Show();
             }
 
@@ -64,8 +78,8 @@ namespace Praktika_1
 
         private void AlreadyReg_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             MainWindow mainWindow = new MainWindow();
+            this.Close();
             mainWindow.Show();
         }
 
@@ -86,6 +100,7 @@ namespace Praktika_1
         {
             if (EmailReg.Text.Length == 0)
             {
+                EmailErrorBox.Text="Введите электронную почту";
                 return false;
             }
 
@@ -96,26 +111,55 @@ namespace Praktika_1
                     return true;
                 }
             }
+            EmailErrorBox.Text="Формат введенной почты некорректен";
             return false;
         }
         private bool PasswordCheck()
         {
+            bool hasUpperCase = false;
+            bool hasDigit = false;
+            bool hasSpecialCharacter = false;
+            if (PasswordReg.Text.Length <= 8)
+            {
+                PasswordErrorBox.Text = "Пароль менее 8 символов";
+                return false;
+            }
+            foreach (char c in PasswordReg.Text)
+            {
+                if (char.IsUpper(c))
+                {
+                    hasUpperCase = true;
+                }
+                else if (char.IsDigit(c))
+                {
+                    hasDigit = true;
+                }
+                else if (!char.IsLetterOrDigit(c))
+                {
+                    hasSpecialCharacter = true;
+                }
+            }
+            if (hasUpperCase == false)
+            {
+                PasswordErrorBox.Text = "Пароль не содержит букв верхнего регистра";
+                return false;
+            }
+            if (hasDigit == false)
+            {
+                PasswordErrorBox.Text = "Пароль не содержит цифр";
+                return false;
+            }
+            if(hasSpecialCharacter == false)
+            {
+                PasswordErrorBox.Text = "Пароль не содержит спецсимволов";
+                return false;
+            }
             if (PasswordReg.Text != PasswordRepReg.Text)
             {
-                MessageBox.Show("Введенные пароли не совпадают");
-                return false;
-            } 
-            if(PasswordReg.Text.Length == 0)
-            {
-                MessageBox.Show("Введите пароль");
+                PasswordErrorBox.Text = "Введенные пароли не совпадают";
                 return false;
             }
-            if (PasswordReg.Text.IndexOf("-",'@','#') > -1)
-            {
-
-                return true;
-            }
-            return false;
+            return true;
         }
     }
 }
